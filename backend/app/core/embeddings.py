@@ -1,11 +1,16 @@
-from langchain_openai import OpenAIEmbeddings
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
+
 from app.config.settings import settings
 
+
 def get_embeddings():
-    if not settings.OPENAI_API_KEY:
-        raise ValueError("OpenAI API key is not set in .env file")
-    
-    return OpenAIEmbeddings(
+
+    if not settings.GOOGLE_API_KEY:
+        raise ValueError(
+            "Google Gemini API Key is not configured."
+        )
+
+    return GoogleGenerativeAIEmbeddings(
         model=settings.EMBEDDING_MODEL,
-        api_key=settings.OPENAI_API_KEY
+        google_api_key=settings.GOOGLE_API_KEY,
     )

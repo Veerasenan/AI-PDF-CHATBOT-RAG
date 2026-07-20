@@ -1,12 +1,17 @@
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
+
 from app.config.settings import settings
 
+
 def get_llm():
-    if not settings.OPENAI_API_KEY:
-        raise ValueError("OpenAI API key is not set in .env file")
-    
-    return ChatOpenAI(
-        model_name=settings.MODEL_NAME,
+
+    if not settings.GOOGLE_API_KEY:
+        raise ValueError(
+            "Google Gemini API Key is not configured."
+        )
+
+    return ChatGoogleGenerativeAI(
+        model=settings.MODEL_NAME,
+        google_api_key=settings.GOOGLE_API_KEY,
         temperature=0.3,
-        api_key=settings.OPENAI_API_KEY
     )

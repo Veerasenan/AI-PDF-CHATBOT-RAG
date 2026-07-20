@@ -5,31 +5,37 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# ======================================================
 # Virtual Environment
+# ======================================================
 venv/
 .venv/
 env/
 ENV/
 
+# ======================================================
 # Python Build
+# ======================================================
 build/
 dist/
 *.egg-info/
+*.whl
 
 # ======================================================
 # Environment Variables
 # ======================================================
 .env
-.env.local
-.env.development
-.env.production
+.env.*
+!.env.example
 
 # ======================================================
 # VS Code
 # ======================================================
 .vscode/
 
+# ======================================================
 # PyCharm
+# ======================================================
 .idea/
 
 # ======================================================
@@ -39,7 +45,7 @@ logs/
 *.log
 
 # ======================================================
-# Pytest
+# Testing
 # ======================================================
 .pytest_cache/
 .coverage
@@ -47,47 +53,37 @@ coverage.xml
 htmlcov/
 
 # ======================================================
-# MyPy
+# Type Checking / Lint
 # ======================================================
 .mypy_cache/
-
-# ======================================================
-# Ruff
-# ======================================================
 .ruff_cache/
 
 # ======================================================
-# ChromaDB (Generated Vector Database)
+# Runtime Generated Data
+# (Created automatically when application runs)
 # ======================================================
-backend/data/chroma_db/
 
-# ======================================================
-# Uploaded PDFs
-# ======================================================
-backend/data/uploaded_pdfs/
+# Ignore everything inside these folders
+data/chroma_db/*
+data/uploaded_pdfs/*
 
-# Processed Documents
-backend/data/processed_docs/
-
-# Temporary Files
-backend/data/temp/
-
-# Cache
-backend/data/cache/
+# Keep the folders themselves
+!data/chroma_db/.gitkeep
+!data/uploaded_pdfs/.gitkeep
 
 # ======================================================
 # Node / React / Vite
 # ======================================================
 frontend/node_modules/
-
 frontend/dist/
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
 # ======================================================
-# OS Files
+# Operating System Files
 # ======================================================
 .DS_Store
 Thumbs.db
@@ -103,29 +99,27 @@ Thumbs.db
 docker-compose.override.yml
 
 # ======================================================
-# LangSmith (if used locally)
+# LangSmith
 # ======================================================
 .langsmith/
 
 # ======================================================
-# Secrets
+# Security
 # ======================================================
 *.pem
 *.key
 *.crt
 
 # ======================================================
-# Miscellaneous
+# Temporary Files
 # ======================================================
 *.tmp
+*.temp
 *.bak
 *.swp
 *.swo
 
 # ======================================================
-# Keep empty folders in Git
+# Mac Resource Fork Files
 # ======================================================
-!backend/data/uploaded_pdfs/.gitkeep
-!backend/data/chroma_db/.gitkeep
-!backend/data/temp/.gitkeep
-!backend/data/cache/.gitkeep
+._*

@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
+import uvicorn
 import os
 
 load_dotenv()
@@ -9,6 +10,13 @@ from app.api.upload import router as upload_router
 from app.api.chat import router as chat_router
 from app.core.vector_store import get_vector_store
 from app.utils.logger import setup_logger
+from app.config.settings import settings
+
+print("=" * 50)
+print("Google API Config Loaded Successfully")
+print("MODEL:", settings.MODEL_NAME)
+print("EMBEDDING MODEL:", settings.EMBEDDING_MODEL)
+print("=" * 50)
 
 logger = setup_logger()
 
@@ -35,5 +43,4 @@ async def startup_event():
     logger.info("✅ Backend started successfully")
 
 if __name__ == "__main__":
-    import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
